@@ -1,53 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
-	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd" >
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-	<bean id="parentTriangle" class="org.migue.learning.spring.Triangle" name="triangle-name"    >
+	<bean id="parentTriangle"
+		class="org.migue.learning.spring.Triangle" name="triangle-name">
 		<property name="pointA">
-			<ref bean="pointA"/>				
+			<ref bean="pointA" />
 		</property>
-	
-	</bean>
- 	
-	<bean id ="triangle1" class="org.migue.learning.spring.Triangle" parent="parentTriangle" >
-		<property name="pointB">		
-			<ref bean="pointB"/>
-		</property>
-		<property name="pointC">		
-			<ref bean="pointC"/>
-		</property>
-		
 	</bean>
 
-
-	<bean id ="triangle2" class="org.migue.learning.spring.Triangle"  parent="parentTriangle"   >
-		<property name="pointB">		
-			<ref bean="pointB"/>
+	<bean id="triangle1" class="org.migue.learning.spring.Triangle"
+		parent="parentTriangle" init-method="myInit" destroy-method="myFinish">
+		<property name="pointB">
+			<ref bean="pointB" />
 		</property>
-	</bean> 
-	
-	
- 	<bean id="pointA" class="org.migue.learning.spring.Point" >
- 		 <property name="x" value="${pointA.pointX}" />
- 		<property name="y" value="${pointA.pointY}" /> 
- 	</bean>
- 
- 	<bean id="pointB" class="org.migue.learning.spring.Point" >
- 		<property name="x" value="-10" />
- 		<property name="y" value="-10" />
- 	</bean>
+		<property name="pointC">
+			<ref bean="pointC" />
+		</property>
+	</bean>
 
- 	<bean id="pointC" class="org.migue.learning.spring.Point" >
- 		<property name="x" value="10" />
- 		<property name="y" value="10" />
- 	</bean>
- 
- 	<!-- <bean class="org.migue.learning.spring.DisplayNameBeanPostProcessor" /> -->
- 	 <!-- <bean class="org.migue.learning.spring.MyBeanFactoryPostProcessor" />-->
- 	 <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" >
- 	 	<property name="locations" value="pointsconfig.properties"></property>
- 	 </bean>
+	<!-- We could also specified datatypes using type or have done collection(list, 
+		map,set) injections -->
+	<!-- We could also have used inner beans , aliases and used the stricter 
+		idref instead of ref -->
+	<!-- We could also done various types of autowiring byName, byType, constructor -->
+	<!-- We could also have added bean scopes - basic types and web aware types -->
+	<!-- We have illustrated Bean definition inheritance where beans inherit 
+		some common properties from another bean by calling it parent. Here triangle1 
+		and triangle2 inherit from parentTriangle. further we can also have list 
+		in the parent bean and the child bean can either override or merge with (add 
+		to by merge= true) the list in the parent. Further, if we want the parent 
+		bean to not be initialized and just be a template for children then it has 
+		to have abstract = true -->
+	<!-- In the bean tag of a particular bean , we could have added init and 
+		destroy method for a particular bean, or to have them for all beans i.e global 
+		scope, include it in the beans tag. Here We have implemented both for the 
+		sake of learning -->
+	<!-- We have also implemented a MyBeanFactoryPostProcessor BeanFactoryPostProcessor 
+		for initializing when the bean factory itself -->
+	<!-- IMP: We have also used out of the box BeanFactoryPostProcessor called 
+		PropertyPlaceholderConfigurer which fills in properties from pointconfig.properties -->
+
+	<bean id="triangle2" class="org.migue.learning.spring.Triangle"
+		parent="parentTriangle">
+		<property name="pointB">
+			<ref bean="pointB" />
+		</property>
+	</bean>
+
+
+	<bean id="pointA" class="org.migue.learning.spring.Point">
+		<qualifier value="circleRelated" />
+		<property name="x" value="${pointA.pointX}" />
+		<property name="y" value="${pointA.pointY}" />
+	</bean>
+
+	<bean id="pointB" class="org.migue.learning.spring.Point">
+		<property name="x" value="-10" />
+		<property name="y" value="-10" />
+	</bean>
+
+	<bean id="pointC" class="org.migue.learning.spring.Point">
+		<property name="x" value="10" />
+		<property name="y" value="10" />
+	</bean>
+
+	<bean id="circle" class="org.migue.learning.spring.Circle">
+		<property name="center">
+			<ref bean="pointA" />
+		</property>
+	</bean>
+	<bean
+		class="org.migue.learning.spring.DisplayNameBeanPostProcessor" />
+	<bean class="org.migue.learning.spring.MyBeanFactoryPostProcessor" />
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<!-- Here value="pointsconfig.properties" means relative path and that 
+			pointsconfig.properties is in the same location as spring.xml If you want 
+			another path, mention value="classpath:pointsconfig.properties" which will 
+			look in all the classpath locations -->
+		<property name="locations" value="pointsconfig.properties"></property>
+	</bean>
+
+	<bean
+		class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor">
+	</bean>
+
+	<bean
+		class="
+		org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor">
+	</bean>
+
+	<!-- Messages you want all over the applications will not be hardcoded. 
+		They will be put as key-value pairs in a properties file. Also for internationalization. 
+		And this properties file will be used by MessageSource To Get Text From Property 
+		Files. -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>mymessages</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- If you add <context:annotation-config /> then no need to add any PostBeanProcessor 
+		explicitly -->
+	<context:annotation-config />
+
+	<!-- Scans for @Component marked beans and other Stereotype Annotations 
+		like @Service, @Controller, @View, @Repository -->
+	<context:component-scan
+		base-package="com.org.migue.learning.spring" />
 </beans>

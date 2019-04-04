@@ -16,7 +16,7 @@ public class MyBeanFactoryPostProcessor implements BeanFactoryPostProcessor{
 
 	public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory)
 			throws BeansException {
-			System.out.println("My Bean Factory Post Processor called");
+		System.out.println("My Bean Factory Post Processor called");
 		
 	}
 
