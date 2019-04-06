@@ -81,3 +81,25 @@ We&#39;ll learn how to configure aspects, advice and pointcuts using the traditi
 ### 3.2 Understanding AOP Proxies
 
 In this video, we go where no Spring AOP tutorial has gone before! We&#39;ll understand how Spring AOP works and how it uses proxy classes to apply advice. And we&#39;ll do this by implementing our own simple factory service. The way Spring AOP works is much more complicated, but this simple implementation should give us a solid understanding of proxy objects and clarify the core concepts
+
+----------------------------
+## Slides
+
+![Alt text](1.jpg?raw=true )
+
+![Alt text](2.jpg?raw=true )
+
+![Alt text](3.jpg?raw=true )
+
+![Alt text](4.jpg?raw=true )
+
+![Alt text](5.jpg?raw=true )
+
+![Alt text](6.jpg?raw=true )
+
+![Alt text](7.jpg?raw=true )
+
+![Alt text](8.jpg?raw=true )
+
+![Alt text](9.jpg?raw=true )
+

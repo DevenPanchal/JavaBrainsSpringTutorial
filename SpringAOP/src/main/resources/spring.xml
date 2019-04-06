@@ -25,7 +25,7 @@
 	<bean name="shapeService" class="org.migue.javabrains.service.ShapeService" autowire="byName">		
 	</bean>
 
-	<!-- if you see any classes with annotation @Aspect, you know it's an aspect... -->
+	<!-- if you see any classes with annotation @Aspect, you know it's an aspect... This is needed for AOP.-->
 	<aop:aspectj-autoproxy />
 	
 	<!-- but we have to define a bean for LoggingAspect too -->
