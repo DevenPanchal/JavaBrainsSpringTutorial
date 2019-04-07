@@ -24,8 +24,8 @@ public class JdbcDemo {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
 		
 		JdbcDaoImpl jdbcDao = (JdbcDaoImpl) ctx.getBean("jdbcDaoImpl"); 
-		SimpleJdbcDaoImpl simpleJdbcDao = (SimpleJdbcDaoImpl) ctx.getBean("simpleJdbcDaoImpl");
-		HibernateDaoImpl hibernateDao = (HibernateDaoImpl) ctx.getBean("hibernateDaoImpl");
+SimpleJdbcDaoImpl simpleJdbcDao = (SimpleJdbcDaoImpl) ctx.getBean("simpleJdbcDaoImpl");
+	HibernateDaoImpl hibernateDao = (HibernateDaoImpl) ctx.getBean("hibernateDaoImpl");
 		
 		Circle circle = jdbcDao.getCircle(1);
 		System.out.println("CIRCLE FETCHED: " + circle.getName());
