@@ -11,7 +11,7 @@ This source code covers the great Spring tutorial by Koushik (JavaBrains). For o
 
  There are three Eclipse projects (one for each part of the tutorial), commented for learning purposes.
 
-1. Spring introduction ("SpringTutorial")
+1. Spring introduction ("SpringTutorial")  [Code: https://github.com/DevenPanchal/JavaBrainsSpringTutorial/tree/master/SpringTutorial]
 
 	This covers the videos from:
 
@@ -23,7 +23,7 @@ This source code covers the great Spring tutorial by Koushik (JavaBrains). For o
 	Spring Tutorial 23 - Event Handling in Spring 
 	http://www.youtube.com/watch?v=ZUe1Xz7DAcY
 
-2. Spring AOP ("SpringAOP")
+2. Spring AOP ("SpringAOP")  [Code: https://github.com/DevenPanchal/JavaBrainsSpringTutorial/tree/master/SpringAOP]
 
 	This covers the videos from:
 
@@ -35,7 +35,7 @@ This source code covers the great Spring tutorial by Koushik (JavaBrains). For o
 	Spring Tutorial 35 - Understanding AOP Proxies
 	http://www.youtube.com/watch?v=yiinKulgm4U
 
-3. Spring Data ("SpringDataTutorial")
+3. Spring Data ("SpringDataTutorial") [Code: https://github.com/DevenPanchal/JavaBrainsSpringTutorial/tree/master/SpringDataTutorial]
 
 	This covers the videos from:
 

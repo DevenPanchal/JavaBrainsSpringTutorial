@@ -87,14 +87,14 @@ We&#39;ll wrap up discussion on the Spring JDBC support by using the DAO support
 In this video, we&#39;ll learn how to integrate the Hibernate framework in our Spring application. We&#39;ll create a SessionFactory as a Spring singleton and use that in our DAO class to work with the database.
 
 --------------------------------------------------
-#### Notes:
+### Notes:
 
-1. JPA vs Hibernate:
+#### 1. JPA vs Hibernate:
 
 JPA or Java Persistence API is a standard specification for ORM implementations whereas Hibernate is the actual ORM implementation or framework. JPA is Java Persistence API. ... Hibernate is a JPA provider/Vendor who responsible for implementing that APIs.
 
 
-2. DAO vs Repository:
+#### 2. DAO vs Repository:
 
 DAO is an abstraction of data persistence. Repository is an abstraction of a collection of objects.
 
@@ -104,7 +104,7 @@ Also, a Repository is generally a narrower interface. It should be simply a coll
 
 In this Spring project, we annotate DAO classes with @Repository too. :-(
 
-3. DAO v/s DTO:
+#### 3. DAO v/s DTO:
 
 DAO is a class that usually has the CRUD operations like save, update, delete. Whereas the DTO is just an object that holds data. It is really a glorified JavaBean with instance variables and setter and getters. Usually it is the DTO that is passed to the save method of a DAO
 
